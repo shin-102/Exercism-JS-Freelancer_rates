@@ -56,8 +56,7 @@ export function priceWithMonthlyDiscount(ratePerHour, numDays, discount) {
 
     let priceWithMonthlyDiscount = Math.ceil(( dayRate(ratePerHour) * numDays) - (discount * (dayRate(ratePerHour) * 22) * Math.floor(numDays / 22)) + (dayRate(ratePerHour) * (numDays % 22))); 
     
-  */
-    let priceWithMonthlyDiscount = Math.ceil(( dayRate(ratePerHour) * numDays) - (discount * (dayRate(ratePerHour) * 22) * Math.floor(numDays / 22)) + (dayRate(ratePerHour) * (numDays % 22))); 
-    // let priceWithMonthlyDiscount = Math.ceil((numDays * dayRate(ratePerHour))-(discount * (numDays * dayRate(ratePerHour)))+((numDays % 22)*dayRate(ratePerHour)));
+  */ 
+    let priceWithMonthlyDiscount = Math.ceil((numDays * dayRate(ratePerHour))-(discount * (numDays * dayRate(ratePerHour)))+((numDays % 22)*dayRate(ratePerHour)));
   return priceWithMonthlyDiscount;
 }
