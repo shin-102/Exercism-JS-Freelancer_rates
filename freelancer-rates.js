@@ -58,13 +58,19 @@ export function priceWithMonthlyDiscount(ratePerHour, numDays, discount) {
     
     ! wromg test to check later (2 left)
     let priceWithMonthlyDiscount = Math.ceil((Math.floor(numDays / 22) * 22 * dayRate(ratePerHour))-(discount * (numDays * dayRate(ratePerHour)))+((numDays % 22)*dayRate(ratePerHour)));
+
+    ! wrong test to check later (4 left)
+    let BilledMonths = Math.floor(numDays / 22);
+    let remainDays = numDays % 22 ;
+    let TotalCost = BilledMonths * 22 / dayRate(ratePerHour) ;
+    Math.ceil(TotalCost - discount * TotalCost + remainDays * dayRate(ratePerHour)) ;
   */ 
     
-  let BilledMonths = Math.floor(numDays / 22);
-  let remainDays = numDays % 22 ;
-  let TotalCost = BilledMonths * 22 / dayRate(ratePerHour) ;
+    let BilledMonths = Math.floor(numDays / 22);
+    let ratePerMonth = 22 * dayRate(ratePerHour);
+    let monthlyDiscount = ratePerMonth * (1-discount); //* (1 - discount means the remaining is the leftover of the discount)
+    let remainDays = numDays % 22;
+    let remainCost = remainDays * dayRate(ratePerHour);
 
-  let priceWithMonthlyDiscount = Math.ceil(TotalCost - (discount * TotalCost) + (remainDays * dayRate(ratePerHour))) ;
-
-  return priceWithMonthlyDiscount;
+    return Math.ceil(BilledMonths * monthlyDiscount + remainCost);
 }
